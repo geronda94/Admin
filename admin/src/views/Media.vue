@@ -7,6 +7,6 @@
 
 
 <template>
-   <h1>Index</h1>
+   <h1>Media</h1>
 </template>
 

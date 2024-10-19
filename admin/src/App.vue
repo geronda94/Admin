@@ -1,7 +1,11 @@
 <script setup>
-import { ref,computed } from 'vue';
+import { ref, computed, provide } from 'vue';
 import Sidebar from './components/Sidebar/Sidebar.vue';
+import axios from 'axios';
 
+
+
+const API = 'http:123.0.0.1:8000/api'
 const lang = ref('en');
 
 const languages = {
@@ -11,16 +15,41 @@ const languages = {
   tr: { name: 'Türkçe', flag:'tr.svg' },
 };
 
-// Пример использования
+
 const switchLanguage = (language) => {
   if (languages[language]) {
     lang.value = language;
   }
 };
 
-// Получение текущего названия языка
+
 const currentLanguageName = computed(() => languages[lang.value]?.name);
 
+
+
+const isAuth = ref(false);
+const userRole = ref(null);
+
+const handleLogin = async (email, password) => {
+  try {
+    // Ваша логика аутентификации, например, запрос на сервер
+    const userData = await fetchUser(email, password);
+    if (userData) {
+      isAuthenticated.value = true;
+      userRole.value = userData.role_id; // Сохраняем роль пользователя
+    }
+  } catch (error) {
+    console.error('Ошибка входа:', error);
+  }
+};
+
+
+
+
+
+
+provide('lang', lang);
+provide('API', API);
 
 
 </script>
@@ -30,9 +59,9 @@ const currentLanguageName = computed(() => languages[lang.value]?.name);
       <div class="sidebar">
         <Sidebar />
       </div>
-      <container class="container__main">
-        <!-- <router-view/> -->
-      </container>
+      <div class="container__main">
+        <router-view/>
+      </div>
     
   </div>
 </template>

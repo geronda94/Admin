@@ -1,8 +1,19 @@
 @font-face {
-    font-family: 'Open Sans Italic';
-    src: url('../Open_Sans/OpenSans-Italic-VariableFont_wdth\,wght.ttf') format('truetype'); /* Safari, Android, iOS */
+  font-family: "Open Sans Italic";
+  src: url("../Open_Sans/OpenSans-Italic-VariableFont_wdth.ttf")
+    format("truetype"); /* Safari, Android, iOS */
 }
 @font-face {
-    font-family: 'Open Sans';
-    src: url('../Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf') format('truetype'); /* Safari, Android, iOS */
+  font-family: "Open Sans";
+  src: url("../Open_Sans/OpenSans-VariableFont.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+
+
+:root{
+  --color-grey: #757575;
+  --color-sky: #4A85F6;
+  --color-blue: #EFF4FA;
+  --color-prime: #222B45;
+  --color-second: #8F9BB3;
+  --color-solid: #404040;
 }

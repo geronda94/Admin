@@ -1,12 +1,7 @@
 <script setup>
 
-
-
 </script>
-
-
-
 <template>
-   <h1>Index</h1>
+    <h1>Users</h1>
+    
 </template>
-
