@@ -6,8 +6,7 @@ import ToDo from '../views/ToDo.vue'
 import Product from '../views/Product.vue'
 import Media from '../views/Media.vue'
 import Users from '../views/Users.vue'
-import ProtectedPage from '../views/ProtectedPage.vue';
-import LoginPage from '../views/AuthForm.vue';
+
 
 let routes = [
     {
@@ -46,15 +45,6 @@ let routes = [
         name_ru: 'Галерея',
         component: Media
     },
-    { 
-        path: '/login', 
-        component: LoginPage 
-    },
-    { 
-        path: '/protected', 
-        component: ProtectedPage, 
-        meta: { requiresAuth: true } 
-    }
 
 ]
 
@@ -66,15 +56,6 @@ const router = createRouter({
     routes: routes
 })
 
-router.beforeEach((to, from, next) => {
-    const isAuthenticated = /* Здесь добавьте проверку аутентификации */;
-    if (to.meta.requiresAuth && !isAuthenticated) {
-      next('/login');
-    } else {
-      next();
-    }
-  });
-  
 
 export const routers = routes.map(({ path, name, name_ru }) => ({ path, name, name_ru }));
 export default router;

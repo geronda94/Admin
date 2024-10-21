@@ -1,11 +1,18 @@
 <script setup>
-import { ref, computed, provide } from 'vue';
+import { ref, computed, provide, onMounted } from 'vue';
 import Sidebar from './components/Sidebar/Sidebar.vue';
+import Login from './components/Auth/Login.vue';
+import Header from './components/Header/Header.vue';
 import axios from 'axios';
 
 
 
-const API = 'http:123.0.0.1:8000/api'
+const API = 'http://localhost:8000/api'
+const isAuth = ref(false)
+const isAdmin = ref(false)
+const me = ref()
+
+
 const lang = ref('en');
 
 const languages = {
@@ -23,46 +30,54 @@ const switchLanguage = (language) => {
 };
 
 
-const currentLanguageName = computed(() => languages[lang.value]?.name);
 
 
 
-const isAuth = ref(false);
-const userRole = ref(null);
+const fetchUserInfo = async () => {
+    try {
+      const response = await axios.get(API+'/auth/me', {withCredentials: true});      
 
-const handleLogin = async (email, password) => {
-  try {
-    // Ваша логика аутентификации, например, запрос на сервер
-    const userData = await fetchUser(email, password);
-    if (userData) {
-      isAuthenticated.value = true;
-      userRole.value = userData.role_id; // Сохраняем роль пользователя
-    }
-  } catch (error) {
-    console.error('Ошибка входа:', error);
+      if (response.status >= 200 && response.status < 300){
+        const userData = me.value  = response.data;
+        me.value = userData
+        // Проверяем, является ли пользователь администратором (role_id = 2 или 3)
+        if (userData.role_id == 2 || userData.role_id == 3) {
+
+          isAdmin.value = true;
+        }
+      }
+    } 
+    catch (error) {
+      console.error( error);
+      isAuth.value = false;
+    };
   }
-};
 
-
-
-
+onMounted(() => {
+  fetchUserInfo();
+});
 
 
 provide('lang', lang);
 provide('API', API);
+provide('isAdmin',isAdmin)
 
 
 </script>
 
 <template>
-  <div class="wrapper">
+  <div v-if="!isAdmin" class="wrapper">
+     <Login/>       
+  </div>  
+
+  <div v-else class="wrapper">
       <div class="sidebar">
         <Sidebar />
       </div>
       <div class="container__main">
+        <Header/>
         <router-view/>
-      </div>
-    
+      </div>    
   </div>
 </template>
 
