@@ -19,3 +19,34 @@
   --color-second: #8F9BB3;
   --color-solid: #404040;
 }
+
+.button{
+  background-color: var(--color-sky);
+  padding: 8px ;
+  color: white;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: "Open Sans";
+  border: 2px solid var(--color-sky);
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.button:hover{
+  background-color: white;
+  color: var(--color-sky);
+  transition: 0.3s;
+}
+
+.input{
+  padding: 8px 10px;
+  color: var(--color-prime);
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: "Open Sans";
+  border: 2px solid white;
+}
+
+.input:focus {
+  outline: 2px solid var(--color-sky); /* Задаем outline аналогично border */
+  /* outline-offset: 2px; */
+}

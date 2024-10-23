@@ -11,23 +11,8 @@ const API = 'http://localhost:8000/api'
 const isAuth = ref(false)
 const isAdmin = ref(false)
 const me = ref()
-
-
 const lang = ref('en');
 
-const languages = {
-  en: { name: 'English', flag:'gb.svg' },
-  ru: { name: 'Русский',  flag:'ru.svg' },
-  ua: { name: 'Українська', flag:'ru.svg'  },
-  tr: { name: 'Türkçe', flag:'tr.svg' },
-};
-
-
-const switchLanguage = (language) => {
-  if (languages[language]) {
-    lang.value = language;
-  }
-};
 
 
 
@@ -58,10 +43,11 @@ onMounted(() => {
 });
 
 
-provide('lang', lang);
+
 provide('API', API);
 provide('isAdmin',isAdmin)
-
+provide('me',me)
+provide('lang', lang);
 
 </script>
 

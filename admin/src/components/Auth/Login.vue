@@ -34,11 +34,35 @@
   </script>
 
 <template>
-    <form @submit.prevent="submitLogin">
-        <input type="email" name="username" v-model="email" placeholder="Email" required />
-        <input type="password" name="password" v-model="password" placeholder="Password" required />
-        <button type="submit">Войти</button>
-    </form>
+    <div class="form__wrapper">
+        <form class="form" @submit.prevent="submitLogin">
+            <input class="input" type="email" name="username" v-model="email" placeholder="Email" required />
+            <input class="input" type="password" name="password" v-model="password" placeholder="Password" required />
+            <button class="button" type="submit">Войти</button>
+        </form>
+    </div>
 </template>
 
+
+<style>
+.form__wrapper{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.form{
+    background: white;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+</style>
   
