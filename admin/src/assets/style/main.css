@@ -18,23 +18,26 @@
   --color-prime: #222B45;
   --color-second: #8F9BB3;
   --color-solid: #404040;
+  --color-black: #0A0A0A;
 }
 
 .button{
   background-color: var(--color-sky);
-  padding: 8px ;
+  padding: 12px ;
   color: white;
   border-radius: 6px;
   font-size: 16px;
   font-family: "Open Sans";
   border: 2px solid var(--color-sky);
-  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.25);
+
+  
 }
 
 .button:hover{
   background-color: white;
   color: var(--color-sky);
   transition: 0.3s;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.25);
 }
 
 .input{
@@ -44,6 +47,7 @@
   font-size: 16px;
   font-family: "Open Sans";
   border: 2px solid white;
+  outline: 2px solid var(--color-second)
 }
 
 .input:focus {

@@ -1,29 +1,23 @@
 <script setup>
 import { provide } from 'vue';
 import Quit from './Quit.vue';
+import Me from './Me.vue';
+import Language from './Language.vue';
 
 
 
-
-const languages = {
-  en: { name: 'English', flag:'gb.svg' },
-  ru: { name: 'Русский',  flag:'ru.svg' },
-  ua: { name: 'Українська', flag:'ru.svg'  },
-  tr: { name: 'Türkçe', flag:'tr.svg' },
-};
-
-const switchLanguage = (language) => {
-  if (languages[language]) {
-    lang.value = language;
-  }
-};
 
 
 </script>
 
 <template>
     <header class="header">
-        <Quit/>
+        <Me />
+
+        <div class="right__block-header"> 
+          <Language />
+          <Quit/>
+        </div>
         
     </header>
 </template>
@@ -31,11 +25,17 @@ const switchLanguage = (language) => {
 <style scoped>
 .header{
     width: 100%;
-    height: 70px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    padding:0 15px;
+    padding:0 35px 20px;
+    margin-top: 31px;
+}
 
+.right__block-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 </style>

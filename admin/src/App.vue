@@ -4,15 +4,15 @@ import Sidebar from './components/Sidebar/Sidebar.vue';
 import Login from './components/Auth/Login.vue';
 import Header from './components/Header/Header.vue';
 import axios from 'axios';
-
+import ModalAdd from './components/Modal/ModalAdd.vue';
 
 
 const API = 'http://localhost:8000/api'
 const isAuth = ref(false)
 const isAdmin = ref(false)
 const me = ref()
-const lang = ref('en');
-
+const lang = ref('ru');
+const modalAddActive = ref(false)
 
 
 
@@ -48,6 +48,8 @@ provide('API', API);
 provide('isAdmin',isAdmin)
 provide('me',me)
 provide('lang', lang);
+provide('modalAddActive', modalAddActive);
+provide('modalAddMediaActive', modalAddActive);
 
 </script>
 
@@ -60,10 +62,18 @@ provide('lang', lang);
       <div class="sidebar">
         <Sidebar />
       </div>
+
       <div class="container__main">
-        <Header/>
-        <router-view/>
-      </div>    
+        <Header />        
+        <router-view/>      
+        
+      </div>
+
+      <ModalAdd
+        :isActive="modalAddActive"      
+      />
+
+      
   </div>
 </template>
 
@@ -85,6 +95,17 @@ provide('lang', lang);
 .container__main{
   min-height: 100%;
   width: calc(100% - 260px);
+  
 }
+
+.content{
+  background: white;
+  width: 100%;
+  height: 100vh;
+}
+
+
+
+
 
 </style>

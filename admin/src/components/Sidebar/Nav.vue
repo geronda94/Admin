@@ -38,6 +38,46 @@ const linkList = {
         ToDo: 'Список справ',
         Users: 'Користувачі',      // Название для пользователей
         Media: 'Медіа',            // Название для медиа
+    },
+    ro: {
+        Index: 'Principal',
+        Products: 'Produse',
+        Orders: 'Comenzi',
+        ToDo: 'De făcut',
+        Users: 'Utilizatori',      // Название для пользователей
+        Media: 'Media',            // Название для медиа
+    },
+    it: {
+        Index: 'Principale',
+        Products: 'Prodotti',
+        Orders: 'Ordini',
+        ToDo: 'Da fare',
+        Users: 'Utenti',           // Название для пользователей
+        Media: 'Media',            // Название для медиа
+    },
+    es: {
+        Index: 'Principal',
+        Products: 'Productos',
+        Orders: 'Pedidos',
+        ToDo: 'Por hacer',
+        Users: 'Usuarios',         // Название для пользователей
+        Media: 'Medios',           // Название для медиа
+    },
+    fr: {
+        Index: 'Principal',
+        Products: 'Produits',
+        Orders: 'Commandes',
+        ToDo: 'À faire',
+        Users: 'Utilisateurs',      // Название для пользователей
+        Media: 'Médias',            // Название для медиа
+    },
+    ar: {
+        Index: 'الرئيسية',
+        Products: 'المنتجات',
+        Orders: 'الطلبات',
+        ToDo: 'قائمة المهام',
+        Users: 'المستخدمون',       // Название для пользователей
+        Media: 'الوسائط',          // Название для медиа
     }
 };
 
@@ -52,12 +92,12 @@ const isActive = (link) => {
     
     
     <nav class="nav__sidebar">
-        <NavItem :title="linkNames.Index" img="dashboard" :link="'/'" :is_active="isActive('/')" />
-        <NavItem :title="linkNames.Products" img="line" :link="'/products'" :is_active="isActive('/products')" />
-        <NavItem :title="linkNames.Orders"  img="media" :link="'/orders'" :is_active="isActive('/orders')" />
-        <NavItem :title="linkNames.ToDo" img="media" :link="'/todos'" :is_active="isActive('/todos')" />
-        <NavItem :title="linkNames.Media" img="media" :link="'/media'" :is_active="isActive('/media')" />
-        <NavItem :title="linkNames.Users" img="media" :link="'/users'" :is_active="isActive('/users')" />
+        <NavItem :title="linkNames.Index" :link="'/'" :is_active="isActive('/')" />
+        <NavItem :title="linkNames.Products" :link="'/products'" :is_active="isActive('/products')" />
+        <NavItem :title="linkNames.Orders"   :link="'/orders'" :is_active="isActive('/orders')" />
+        <NavItem :title="linkNames.ToDo"  :link="'/todos'" :is_active="isActive('/todos')" />
+        <NavItem :title="linkNames.Media"  :link="'/media'" :is_active="isActive('/media')" />
+        <NavItem :title="linkNames.Users"  :link="'/users'" :is_active="isActive('/users')" />
     </nav>
 
 </template>
