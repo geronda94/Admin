@@ -1,11 +1,11 @@
 <script setup>
-import { ref, computed, provide, onMounted } from 'vue';
+import { ref, reactive, computed, provide, onMounted } from 'vue';
 import Sidebar from './components/Sidebar/Sidebar.vue';
 import Login from './components/Auth/Login.vue';
 import Header from './components/Header/Header.vue';
 import axios from 'axios';
 import ModalAdd from './components/Modal/ModalAdd.vue';
-
+import MediaModalSelector from './components/Media/MediaModalSelector.vue';
 
 const API = 'http://localhost:8000/api'
 const isAuth = ref(false)
@@ -13,7 +13,6 @@ const isAdmin = ref(false)
 const me = ref()
 const lang = ref('ru');
 const modalAddActive = ref(false)
-
 
 
 
@@ -49,7 +48,7 @@ provide('isAdmin',isAdmin)
 provide('me',me)
 provide('lang', lang);
 provide('modalAddActive', modalAddActive);
-provide('modalAddMediaActive', modalAddActive);
+
 
 </script>
 
@@ -64,15 +63,13 @@ provide('modalAddMediaActive', modalAddActive);
       </div>
 
       <div class="container__main">
-        <Header />        
+        <Header/>        
         <router-view/>      
         
       </div>
 
-      <ModalAdd
-        :isActive="modalAddActive"      
-      />
-
+      <ModalAdd />
+      <!-- <MediaModalSelector v-if="MediaSelectorActive"/> -->
       
   </div>
 </template>

@@ -28,10 +28,9 @@ const path = API+'/static/'+props.fullPath
   </template>
 <style>
 .file__item{
-    width: 150px;
+    width: 163px;
     height: 190px;
-    border-radius: 12px;
-    outline: 1px solid var(--color-blue);
+
     transition: 0.3s;
 }
 
@@ -42,11 +41,6 @@ const path = API+'/static/'+props.fullPath
     height: auto;
 }
 
-.file__item:hover{
-    outline: 1px solid var(--color-prime);
-    background: var(--color-blue);
-    transition: 0.3s;
-}
 
 .item__icon{
     width: 140px;

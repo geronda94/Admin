@@ -1,5 +1,6 @@
 <script setup>
 import Switch from '../ui/Switch.vue';
+import FileInput from '../Media/FileInput.vue';
 </script>
 
 <template>    
@@ -36,7 +37,25 @@ import Switch from '../ui/Switch.vue';
         <label class="label__input two__row" for="title_tr">
             <input class="input modal__input" placeholder="Title (TR)" type="text" id="title_tr" name="title_tr">
         </label>
-        
+
+
+        <div class="flex__row">
+            <!-- Media Links -->
+            <FileInput selectorTitle ="Выбрать аватар" inputId="product_avatar" />
+            
+        </div>
+
+        <div class="flex__row">
+            <label class="label__input" for="slides">
+                <input class="input modal__input" placeholder="Slides URLs (comma-separated)" type="text" id="slides" name="slides">
+            </label>
+        </div>
+
+        <div class="flex__row">
+            <label class="label__input " for="video">
+                <input class="input modal__input" placeholder="Video URL" type="text" id="video" name="video">
+            </label>
+        </div>
 
         <div class="flex__row">
             <label class="label__input " for="price">
@@ -65,18 +84,7 @@ import Switch from '../ui/Switch.vue';
             <textarea class="input modal__input" placeholder="Description (TR)" id="description_tr" name="description_tr"></textarea>
         </label>
 
-        <div class="flex__row">
-            <!-- Media Links -->
-            <label class="label__input" for="avatar">
-                <input class="input modal__input" placeholder="Avatar URL" type="text" id="avatar" name="avatar">
-            </label>
-            <label class="label__input" for="slides">
-                <input class="input modal__input" placeholder="Slides URLs (comma-separated)" type="text" id="slides" name="slides">
-            </label>
-            <label class="label__input " for="video">
-                <input class="input modal__input" placeholder="Video URL" type="text" id="video" name="video">
-            </label>
-        </div>
+        
 </template>
 
 <style scoped>
