@@ -1,6 +1,6 @@
 <script setup>
 import Media from './Media.vue';
-import { ref, provide } from 'vue';
+import { ref, provide, inject } from 'vue';
 
 const props = defineProps({
   isActive: Boolean,
@@ -8,9 +8,6 @@ const props = defineProps({
   
 });
 
-
-const resetSelected = ref(false)
-provide('resetSelected', resetSelected )
 
 
 const emits = defineEmits(["update:isActive", "update:selectedFiles", "resetFiles"]);
@@ -27,7 +24,7 @@ const closeModal = () => {
 const confirmSelection = () => {
   emits('update:selectedFiles', selectedFromMedia.value);
   selectedFromMedia.value = []; // Очищаем локальные выбранные файлы
-  resetSelected.value = true
+  // resetSelected.value = true
   closeModal();
 };
 // Обновление `selectedFromMedia` при изменении файлов в компоненте `Media`

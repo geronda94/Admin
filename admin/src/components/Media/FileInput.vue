@@ -119,6 +119,7 @@ const dropItem = (index) => {
     </div>
 
     <MediaModalSelector
+    v-if="ModalActive"
       v-model:isActive="ModalActive"
       @update:selectedFiles="handleFilesUpdate"
     />

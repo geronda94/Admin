@@ -16,29 +16,26 @@ const folderName = ref(""); // Название новой папки
 
 const showModal = ref(false);
 const selectedFileName = ref("");
-const selectedFilePath = ref("");
+const selectedFilePath = ref("")
 
 const shopUploadField = ref(false);
 const isUploading = ref(false);
 const selectedFiles = ref([]);
 const uploadStatus = ref([]); // Состояние загрузки каждого файла в процентах
 
+
+
 const cutFiles = ref([]);
 const isMoveMode = ref(false);
 
 
-const resetSelected = inject('resetSelected')
+
 
 const emits = defineEmits(['updateSelectedFiles']);
 watch(selectedFiles, (newFiles) => {
   emits('updateSelectedFiles', newFiles); // Передача обновленного списка файлов
 });
 
-
-watch(resetSelected, () => {
-  selectedFiles.value = []; // Сбрасываем выбранные файлы
-  resetSelected.value = false; // Обнуляем состояние сброса
-})
 
 
 const initiateMoveMode = () => {
@@ -380,9 +377,9 @@ fetchData();
             <p class="upload__header">Загрузка файлов...</p>
             <!-- Индикатор загрузки -->
             <div v-for="(file, index) in selectedFiles" :key="index">
-              <div class="upload__status">
+              <div v-if="uploadStatus[index]<100" class="upload__status">
                 <div class="upload__name">{{ file.name }}</div>
-                <progress :value="uploadStatus[index]" max="100"></progress>
+                <progress  :value="uploadStatus[index]" max="100"></progress>
               </div>
             </div>
           </div>
@@ -584,6 +581,8 @@ input[type="checkbox"] {
 
 .input__container {
   position: absolute;
+  max-height: 70vh;
+  overflow: auto;
   top: 100%;
   right: 0;
   margin-top: 5px;
@@ -595,6 +594,8 @@ input[type="checkbox"] {
   background: white;
   padding: 5px 10px;
   outline: 2px solid var(--color-sky);
+  scrollbar-width: thin; /* Для Firefox */
+  scrollbar-color: var(--color-prime) var(--color-blue);
 }
 
 .input__container input {

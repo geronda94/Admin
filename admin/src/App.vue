@@ -17,6 +17,7 @@ const modalAddActive = ref(false)
 
 
 
+
 const fetchUserInfo = async () => {
     try {
       const response = await axios.get(API+'/auth/me', {withCredentials: true});      
