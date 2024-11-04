@@ -47,6 +47,21 @@ const initiateMoveMode = () => {
     isMoveMode.value = true;
 };
 
+const toggleSelection = (filePath) => {
+  const index = selectedFiles.value.indexOf(filePath);
+  if (index > -1) {
+    // Удаляем файл, если он уже выбран
+    selectedFiles.value.splice(index, 1);
+  } else {
+    // Добавляем файл, если он не выбран
+    selectedFiles.value.push(filePath);
+  }
+  emits('updateSelectedFiles', selectedFiles.value);
+};
+
+
+
+
 const completeMove = async () => {
     try {
         // Перемещаем файлы по одному
@@ -419,23 +434,19 @@ fetchData();
         ]"
         v-for="item in currentFiles"
         :key="item.fullPath"
+        @click="toggleSelection(item.fullPath)"
       >
-        <label :for="item.name">
+        
           <FileItem
             :type="item.type"
             :name="item.name"
             :full-path="item.fullPath"
             @dblclick="handleDoubleClick(item)"
           />
-          <input
-            type="checkbox"
-            :id="item.name"
-            :value="item.fullPath"
-            v-model="selectedFiles"
-          />
-        </label>
+        
       </div>
     </div>
+
   </div>
 
 

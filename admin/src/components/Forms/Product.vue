@@ -41,16 +41,19 @@ import FileInput from '../Media/FileInput.vue';
 
         <div class="flex__row">
             <!-- Media Links -->
-            <FileInput selectorTitle ="Выбрать аватар" inputId="product_avatar" />
+            <FileInput selectorTitle="Select photo" max-items="1" inputId="product_avatar" />
+            
+        </div>
+        <div class="flex__row">
+            <!-- Media Links -->
+            <FileInput selectorTitle ="Select slides"
+                initial-files="6759376337.jpg,ab54ae7e83cdfd75aaf1a501d825d29b.jpg,fast-fashion-vs-slow-sustainable-fashion_23-2149134026.avif,220726-29-1.jpg,200709-48-5.jpg"
+
+              inputId="product_slides" />
             
         </div>
 
-        <div class="flex__row">
-            <label class="label__input" for="slides">
-                <input class="input modal__input" placeholder="Slides URLs (comma-separated)" type="text" id="slides" name="slides">
-            </label>
-        </div>
-
+        
         <div class="flex__row">
             <label class="label__input " for="video">
                 <input class="input modal__input" placeholder="Video URL" type="text" id="video" name="video">

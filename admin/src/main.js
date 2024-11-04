@@ -11,12 +11,12 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faHeart, faHand, faAddressBook, faCreditCard, faLemon, faHourglass, 
      faFileLines, faImage } from '@fortawesome/free-regular-svg-icons';
-import { faMagnifyingGlass, faXmark, faFolder, faArrowLeft, faHouse, faFolderPlus, faCheck, 
+import { faMagnifyingGlass, faXmark, faFolder, faArrowLeft, faArrowRight, faHouse, faFolderPlus, faCheck, 
      faTrash, faUpDownLeftRight, faCheckDouble   } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faHeart, faHand, faAddressBook, faCreditCard, faLemon, faHourglass,
      faMagnifyingGlass, faXmark, faFolder, faArrowLeft, faHouse, faFolderPlus, 
-     faFileLines, faCheck, faTrash, faUpDownLeftRight, faCheckDouble, faImage  );
+     faFileLines, faCheck, faTrash, faUpDownLeftRight, faCheckDouble, faArrowRight, faImage  );
 
 
 // import PrimeVue from "primevue/config";
