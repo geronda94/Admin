@@ -1,12 +1,16 @@
 <script setup>
-import Header from '../components/RouterHeader/RouterHeader.vue';
-import { inject } from 'vue';
-const lang = inject('lang')
 
+import Header from '../components/RouterHeader/RouterHeader.vue';
+import ProductForm from '../components/Forms/Product.vue';
+
+const props = defineProps({
+    title: String
+})
 </script>
+
 <template>
     <Header 
-        title="Products"
-    /> 
-        
+        :title="title" 
+        :modalForm="ProductForm" 
+    />
 </template>

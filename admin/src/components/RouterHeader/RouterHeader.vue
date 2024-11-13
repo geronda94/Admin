@@ -1,28 +1,42 @@
 <script setup>
-import Search from "./Search.vue"
-import AddButton from "./AddButton.vue";
+import { inject, ref } from 'vue';
+import Modal from '../Modal/ModalAdd.vue';
 
 const props = defineProps({
-    title: String
-})
+    title: String,
+    modalForm: Object // Передаем компонент формы
+});
 
+const modalAddActive = ref(false)
 
 const langNames = {
     search: 'Search',
     add: 'Add item'
-}
+};
 </script>
-<template>    
+
+<template>
     <div class="router__header">
         <h1 class="router__title">{{ title }}</h1>
         <div class="router__header-row">
             <Search :title="langNames.search" />
-            <AddButton :buttonName="langNames.add"/>
-            
+            <AddButton @click="modalAddActive=true" :buttonName="langNames.add"/>
         </div>
-    </div>
 
+        <!-- Передаем компонент формы в модальное окно и состояние видимости -->
+        <Modal 
+            v-if="modalAddActive"
+
+            v-model:isActive="modalAddActive" 
+            :modalForm="modalForm" 
+            />
+    </div>
 </template>
+
+
+
+
+
 <style>
 
 

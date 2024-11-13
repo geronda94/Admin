@@ -1,20 +1,36 @@
 <script setup>
-defineProps({
+import { defineProps, ref, watch } from 'vue';
+
+const props = defineProps({
     title: String,
     fieldName: String,
     isChecked: {
         type: Boolean,
         default: false
     }
+});
 
-})
+const isCheckedValue = ref(props.isChecked);
 
+// Следим за изменением isCheckedValue и обновляем value атрибут
+watch(isCheckedValue, (newVal) => {
+    isCheckedValue.value = newVal ? 'true' : 'false';
+});
 </script>
+
 <template>    
     <label class="label__input switch__label" :for="title">
         <p>{{title}}</p>
         <label class="switch" :for="title">
-            <input class="input modal__input" type="checkbox" :id="title" :name="fieldName" :checked="isChecked"/>
+            <input 
+                class="input modal__input" 
+                type="checkbox" 
+                :id="title" 
+                :name="fieldName" 
+                :value="isCheckedValue"
+                :checked="isCheckedValue"
+                @change="isCheckedValue = $event.target.checked ? 'true' : 'false'"
+            />
             <span class="slider round"></span>
         </label>
     </label>

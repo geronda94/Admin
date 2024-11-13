@@ -41,7 +41,7 @@ import FileInput from '../Media/FileInput.vue';
 
         <div class="flex__row">
             <!-- Media Links -->
-            <FileInput selectorTitle="Select photo" :max-items="1" initial-files="" inputId="product_avatar" />
+            <FileInput selectorTitle="Select photo" :max-items="1"  inputId="product_avatar" />
            
      
 
@@ -50,7 +50,7 @@ import FileInput from '../Media/FileInput.vue';
             <!-- Media Links -->
             <FileInput selectorTitle ="Select slides"
                 inputId="product_slides"
-                initial-files="200703_5 (2).jpg,200709-48-5 (2).jpg,220726-29-1 (2).jpg,ab54ae7e83cdfd75aaf1a501d825d29b (2).jpg,6728899108.jpg,6726852560.jpg,categories/pants/2025/model 2/images.jpeg,categories/pants/2025/model 2/1041175-full_product.webp"
+
              />
             
         </div>

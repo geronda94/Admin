@@ -69,7 +69,7 @@ provide('modalAddActive', modalAddActive);
         
       </div>
 
-      <ModalAdd />
+      <!-- <ModalAdd /> -->
       <!-- <MediaModalSelector v-if="MediaSelectorActive"/> -->
       
   </div>
