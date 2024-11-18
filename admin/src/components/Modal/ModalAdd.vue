@@ -93,7 +93,7 @@ async function submitForm(event) {
 
 .load__title{
   width: 100%;
-  padding: 20px;
+  padding: 20pxbackend;
   text-align: center
 }
 

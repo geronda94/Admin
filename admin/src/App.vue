@@ -4,8 +4,6 @@ import Sidebar from './components/Sidebar/Sidebar.vue';
 import Login from './components/Auth/Login.vue';
 import Header from './components/Header/Header.vue';
 import axios from 'axios';
-import ModalAdd from './components/Modal/ModalAdd.vue';
-import MediaModalSelector from './components/Media/MediaModalSelector.vue';
 
 const API = 'http://localhost:8000/api'
 const isAuth = ref(false)
@@ -69,8 +67,6 @@ provide('modalAddActive', modalAddActive);
         
       </div>
 
-      <!-- <ModalAdd /> -->
-      <!-- <MediaModalSelector v-if="MediaSelectorActive"/> -->
       
   </div>
 </template>
