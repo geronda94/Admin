@@ -1,27 +1,63 @@
 <script setup>
 import Switch from '../ui/Switch.vue';
 import FileInput from '../Media/FileInput.vue';
+import { inject, ref, onMounted } from 'vue';
+import axios from 'axios';
+
+const API = inject('API')
+const lang = inject('lang')
+
+
+
+// Реактивное состояние для категорий
+const categories = ref([]);
+
+// Функция для загрузки категорий
+const fetchCategories = async () => {
+  try {
+    const response = await axios.get(`${API}/products/get-categories`, {
+      withCredentials: true, // Включаем куки
+    });
+    categories.value = response.data;
+  } catch (error) {
+    console.error('Ошибка при загрузке категорий:', error);
+  }
+};
+
+// Загружаем категории при монтировании компонента
+onMounted(() => {
+  fetchCategories();
+});
+
+const getCategoryTitle = (category) => {
+  const localizedTitle = category[`title_${lang.value}`];
+  return localizedTitle || category.title_en; // Используем локализованное название или title_en
+};
+
 </script>
 
 <template>    
     <div class="flex__row">
-            <Switch title="Is Awailable" field-name="is_awailable" :is-checked="true"/>
+        <Switch title="Is Awailable" field-name="is_available" :is-checked="true"/>
 
-            <label class="label__input" for="code">
-                <input class="input modal__input" placeholder="Product Code" type="text" id="code" name="code">
-            </label>
-            <label class="label__input" for="category_id">
-                <select class="input modal__input" id="category_id" name="category_id">
-                    <option value="">Select Category</option>
-                    <option value="1">Category 1</option>
-                    <option value="2">Category 2</option>
-                    <!-- Add other categories dynamically -->
-                </select>
-            </label>
-
+        <label class="label__input" for="code">
+            <input class="input modal__input" placeholder="Product Code" type="text" id="code" name="code">
+        </label>
+        <label class="label__input" for="category_id">
+            <select class="input modal__input" id="category_id" name="category_id">
+                <option value="">Select Category</option>
+                <!-- Динамическое добавление категорий -->
+                <option
+                v-for="category in categories"
+                :key="category.id"
+                :value="category.id"
+                >
+                {{ getCategoryTitle(category) }}
+                </option>
+            </select>
+        </label>           
             
-            
-        </div>
+    </div>
 
 
 

@@ -12,5 +12,6 @@ const props = defineProps({
     <Header 
         :title="title" 
         :modalForm="ProductForm" 
+        endpoint="/products/add-product"
     />
 </template>

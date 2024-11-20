@@ -4,7 +4,8 @@ import Modal from '../Modal/ModalAdd.vue';
 
 const props = defineProps({
     title: String,
-    modalForm: Object // Передаем компонент формы
+    modalForm: Object, // Передаем компонент формы
+    endpoint: String
 });
 
 const modalAddActive = ref(false)
@@ -29,6 +30,7 @@ const langNames = {
 
             v-model:isActive="modalAddActive" 
             :modalForm="modalForm" 
+            :endpoint="endpoint"
             />
     </div>
 </template>
