@@ -2,18 +2,85 @@
 
 import Header from '../components/RouterHeader/RouterHeader.vue';
 import ProductForm from '../components/Forms/Product.vue';
-import { inject } from 'vue';
+import { inject, reactive, ref, onMounted } from 'vue';
+import axios from 'axios';
 
 
 
 
-
-const endpointTag = 'products'
+const endpointTag = '/products'
 const API = inject('API')
 
 const props = defineProps({
     title: String
 })
+
+const categories = reactive([])
+
+const state = reactive({
+  products: [],
+  page: 1,
+  perPage: 50,
+
+});
+
+
+const fetchCategories  = async () => {
+    try{
+      const response = await axios.get(`${API}/products/get-categories`, {
+                withCredentials: true,
+            });
+
+            categories.push(...response.data);
+
+    }catch (error) {
+    console.error('Ошибка при загрузке категорий:', error);
+  }
+
+}
+
+
+
+
+
+const fetchProducts = async (page = 1) => {
+  try {
+    const response = await axios.get(`${API}/products/products`, {
+      params: { page: state.page, per_page: state.perPage },
+      withCredentials: true,
+    });
+
+    state.products = response.data;
+    state.page  +=1;
+
+
+
+  } catch (error) {
+    console.error('Ошибка при загрузке продуктов:', error);
+  }
+
+
+};
+
+
+const getCategoryName = (category_id)  => {
+        for (let i of categories){
+            if ( i.id == category_id){
+                return i.title_ua
+            }
+        }
+
+        return 'Без категории'
+    }
+
+
+    
+
+onMounted(() => {
+  fetchProducts(state.page);
+  fetchCategories()
+
+});
 </script>
 
 <template>
@@ -33,28 +100,74 @@ const props = defineProps({
                     <div class="row-item">
                         Image
                     </div>
+                    <!-- <div class="row-item">
+                        Slides
+                    </div> -->
+                    
                     <div class="row-item">
                         Title
                     </div>
                     <div class="row-item">
+                        Category
+                    </div>
+                    <div class="row-item">
                         Price
                     </div>
+                    
+                    <div class="row-item">
+                        Discount
+                    </div>
+                    <div class="row-item">
+                        Code
+                    </div>
+                    <div class="row-item">
+                        Status
+                    </div>
+                    <div class="row-item">
+                        Actions
+                    </div>
+                    
                 </div>
 
-            <div class="row__content row__table">
-                <div class="row-item">
-                    <img src="" alt="">
-                </div>
-                <div class="row-item">
-                    Название товара...
-                </div>
-                <div class="row-item">
-                    Цена
+            <div class="row__table-wrapper">
+                <div v-for="item of state.products"
+                        :key="item.id"
+                
+                        class="row__content row__table">
+                    <div class="row-item">
+                        {{ item.avatar }}
+                    </div>
+                    <!-- <div class="row-item">
+                        {{ item.slides }}
+                    </div> -->
+                    <div class="row-item">
+                        {{ item.title_ua }}
+                    </div>
+                    <div class="row-item">
+                        {{ getCategoryName(item.category_id) }}
+                    </div>
+
+                    <div class="row-item">
+                        {{ item.price }}
+                    </div>
+                    <div class="row-item">
+                        {{ item.discount_value }}
+                    </div>
+                    <div class="row-item">
+                        {{ item.code }}
+                    </div>
+                    <div class="row-item">
+                        {{ item.is_available ? 'доступно' : 'недоступно' }}
+                    </div>
+
+                    <div class="row-item">
+                        Действия
+                    </div>
                 </div>
             </div>
-            </div>
-            
         </div>
+            
+    </div>
 
 </template>
 
@@ -82,8 +195,9 @@ const props = defineProps({
 
 .router__title-h{
     font-family: "Open Sans";
-    font-size: 17px;
+    font-size: 22px;
     font-weight: 550;
+    color: var(--color-sky);
 }
 
 
@@ -91,8 +205,13 @@ const props = defineProps({
 
 .row__table{
     display: grid;
-    grid-template-columns: 100px 1fr 100px; /* Фиксированная ширина столбцов */
+    grid-template-columns: 150px 150px 400px 150px 60px 60px 150px 100px 300px ; 
 }
+
+/* .row__table{
+    display: flex;
+    gap: 15px;
+} */
 
 .row__title {
   background-color:var(--color-blue) !important;

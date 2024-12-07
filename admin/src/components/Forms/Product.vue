@@ -43,10 +43,11 @@ const getCategoryTitle = (category) => {
         <label class="label__input" for="code">
             <input class="input modal__input" placeholder="Product Code" type="text" id="code" name="code">
         </label>
+        <label class="label__input" for="id_crm">
+            <input class="input modal__input" placeholder="Id crm" type="text" id="id_crm" name="id_crm">
+        </label>
         <label class="label__input" for="category_id">
             <select class="input modal__input" id="category_id" name="category_id">
-                <option value="">Select Category</option>
-                <!-- Динамическое добавление категорий -->
                 <option
                 v-for="category in categories"
                 :key="category.id"
@@ -70,14 +71,14 @@ const getCategoryTitle = (category) => {
         <label class="label__input two__row" for="title_ua">
             <input class="input modal__input" placeholder="Title (UA)" type="text" id="title_ua" name="title_ua">
         </label>
-        <label class="label__input two__row" for="title_tr">
+        <!-- <label class="label__input two__row" for="title_tr">
             <input class="input modal__input" placeholder="Title (TR)" type="text" id="title_tr" name="title_tr">
-        </label>
+        </label> -->
 
 
         <div class="flex__row">
             <!-- Media Links -->
-            <FileInput selectorTitle="Select photo" :max-items="1"  inputId="product_avatar" />
+            <FileInput selectorTitle="Select photo" :max-items="1"  inputId="avatar" />
            
      
 
@@ -85,18 +86,14 @@ const getCategoryTitle = (category) => {
         <div class="flex__row">
             <!-- Media Links -->
             <FileInput selectorTitle ="Select slides"
-                inputId="product_slides"
+                inputId="slides"
 
              />
             
         </div>
 
         
-        <div class="flex__row">
-            <label class="label__input " for="video">
-                <input class="input modal__input" placeholder="Video URL" type="text" id="video" name="video">
-            </label>
-        </div>
+
 
         <div class="flex__row">
             <label class="label__input " for="price">
@@ -107,7 +104,7 @@ const getCategoryTitle = (category) => {
 
             <!-- Discount Value -->
             <label class="label__input" for="discount_value">
-                <input class="input modal__input" placeholder="Discount Value" type="number" id="discount_value" name="discount_value">
+                <input class="input modal__input" placeholder="Discount Value" type="number" value="0" id="discount_value" name="discount_value">
             </label>
         </div>
         
@@ -121,9 +118,9 @@ const getCategoryTitle = (category) => {
         <label class="label__input one__row" for="description_ua">
             <textarea class="input modal__input" placeholder="Description (UA)" id="description_ua" name="description_ua"></textarea>
         </label>
-        <label class="label__input one__row" for="description_tr">
+        <!-- <label class="label__input one__row" for="description_tr">
             <textarea class="input modal__input" placeholder="Description (TR)" id="description_tr" name="description_tr"></textarea>
-        </label>
+        </label> -->
 
         
 </template>
