@@ -41,10 +41,10 @@ const getCategoryTitle = (category) => {
         <Switch title="Is Awailable" field-name="is_available" :is-checked="true"/>
 
         <label class="label__input" for="code">
-            <input class="input modal__input" placeholder="Product Code" type="text" id="code" name="code">
+            <input class="input modal__input" placeholder="Articul Code" type="text" id="code" name="code">
         </label>
         <label class="label__input" for="id_crm">
-            <input class="input modal__input" placeholder="Id crm" type="text" id="id_crm" name="id_crm">
+            <input class="input modal__input" placeholder="ID crm" type="text" id="id_crm" name="id_crm">
         </label>
         <label class="label__input" for="category_id">
             <select class="input modal__input" id="category_id" name="category_id">

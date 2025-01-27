@@ -2,6 +2,7 @@
 
 import Header from '../components/RouterHeader/RouterHeader.vue';
 import ProductForm from '../components/Forms/Product.vue';
+import DropDownView from '../components/ui/DropDownView.vue';
 import { inject, reactive, ref, onMounted } from 'vue';
 import axios from 'axios';
 
@@ -98,6 +99,9 @@ onMounted(() => {
 
                 <div class="row__title row__table">
                     <div class="row-item">
+                        ID
+                    </div>
+                    <div class="row-item">
                         Image
                     </div>
                     <!-- <div class="row-item">
@@ -120,22 +124,26 @@ onMounted(() => {
                     <div class="row-item">
                         Code
                     </div>
-                    <div class="row-item">
+                    <!-- <div class="row-item">
                         Status
-                    </div>
+                    </div> -->
                     <div class="row-item">
                         Actions
                     </div>
                     
                 </div>
 
-            <div class="row__table-wrapper">
-                <div v-for="item of state.products"
-                        :key="item.id"
-                
-                        class="row__content row__table">
+            <div 
+                    v-for="item of state.products"
+                    :key="item.id"
+                    :class="['row__table-wrapper', {'bg-red-50':!item.is_available}]"
+            >
+                <div :class="['row__content', 'row__table' ]">
+                    <div class="row-item" style="font-weight: 900; font-size: 20px; color: var(--color-second);">
+                        {{item.id}}
+                    </div>
                     <div class="row-item">
-                        {{ item.avatar }}
+                        <img class="row__product-img" :src="API+ '/static/' + item.avatar" alt="">
                     </div>
                     <!-- <div class="row-item">
                         {{ item.slides }}
@@ -156,14 +164,18 @@ onMounted(() => {
                     <div class="row-item">
                         {{ item.code }}
                     </div>
-                    <div class="row-item">
+                    <!-- <div class="row-item">
                         {{ item.is_available ? 'доступно' : 'недоступно' }}
-                    </div>
+                    </div> -->
 
                     <div class="row-item">
-                        Действия
+                        <div class="row__action-item">
+
+                        </div>
                     </div>
                 </div>
+                
+                <DropDownView />
             </div>
         </div>
             
@@ -173,6 +185,23 @@ onMounted(() => {
 
 
 <style>
+
+.row-item img {
+    height: auto;
+    width: 100px;
+    border-radius: 7px;
+    box-shadow: -1px 2px 5px var(--color-solid);
+}
+.row__product-img{
+    height: auto;
+    width: 100%;
+    
+}
+
+.row__table-wrapper{
+    border-bottom: 1px solid var(--color-second);
+}
+
 .table__wrapper{
     width: 100%;
     height: 82.4vh;
@@ -185,8 +214,28 @@ onMounted(() => {
     height: 100%;
     border-radius: 20px;
     background: white;
+    overflow: auto;
+    padding-bottom: 30px;
+    scrollbar-width: thin; /* Для Firefox */
+    scrollbar-color: var(--color-prime) var(--color-blue);
+
 
 }
+
+.table__body::-webkit-scrollbar {
+    width: 8px; /* Ширина скроллбара */
+}
+
+.table__body::-webkit-scrollbar-thumb {
+    background-color: var(--color-prime); /* Цвет ползунка */
+    border-radius: 10px; /* Радиус скругления ползунка */
+}
+
+.table__body::-webkit-scrollbar-track {
+    background: var(--color-blue); /* Цвет дорожки */
+    border-radius: 10px; /* Радиус скругления дорожки */
+}
+
 
 
 .table__title{
@@ -203,10 +252,14 @@ onMounted(() => {
 
 
 
-.row__table{
+.row__table {
     display: grid;
-    grid-template-columns: 150px 150px 400px 150px 60px 60px 150px 100px 300px ; 
+    grid-template-columns: 30px 140px 270px 110px 110px 100px 80px auto; /* Для всех колонок */
+    gap: 10px;
+    justify-items: center; /* Выравнивание по горизонтали */
+    align-items: center; /* Выравнивание по вертикали */
 }
+
 
 /* .row__table{
     display: flex;
@@ -230,9 +283,6 @@ onMounted(() => {
   text-align: center; /* Центрирование текста */
 }
 
-.row-item img {
-  max-width: 100%;
-  height: auto;
-}
+
 
 </style>

@@ -9,12 +9,7 @@ const languages = {
   en: { name: 'English', title:'Language', flag:'/flags/gb.svg' },
   ru: { name: 'Русский', title:'Язык',   flag:'/flags/ru.svg' },
   ua: { name: 'Українська', title:'Мова',  flag:'/flags/ua.svg'  },
-  tr: { name: 'Türkçe', title:'Dil',  flag:'/flags/tr.svg' },
-  ro: { name: 'Română', title: 'Limba', flag: '/flags/ro.svg' }, // Румынский
-  it: { name: 'Italiano', title: 'Lingua', flag: '/flags/it.svg' }, // Итальянский
-  es: { name: 'Español', title: 'Idioma', flag: '/flags/es.svg' }, // Испанский
-  fr: { name: 'Français', title: 'Langue', flag: '/flags/fr.svg' }, // Французский
-  ar: { name: 'العربية', title: 'اللغة', flag: '/flags/ar.svg' } // Арабский
+
 };
 const toggleDropdown = () => {
     dropdownActive.value = !dropdownActive.value;
